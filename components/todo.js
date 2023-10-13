@@ -15,9 +15,11 @@ function Todo({ onAddTask , onDeleteTask}) {
             return; // Do not add empty tasks
         }
 
-        onAddTask({ task });
+        onAddTask({ task, status : 'incomplete' });////
         setTask('');
     };
+
+    
 
     return (
         <div className={classes.textarea}>

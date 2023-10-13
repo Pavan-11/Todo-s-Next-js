@@ -37,6 +37,7 @@ function HomePage({ initialTodoData }) {
           id: data.taskId, 
           task: enteredTaskData.task,
           status : data.status,
+          status : enteredTaskData.status,
         },
       ]);
     } catch (error) {
@@ -61,6 +62,33 @@ function HomePage({ initialTodoData }) {
     }
   }
 
+  const togleStatusHandler = async (taskId) => {
+    const updateTodos = todos.map((todo) => {
+      if(todo.id === taskId){
+        const updatedStatus = todo.status === 'incomplete' ? 'completed' : 'incomplete';
+        return {...todo, status : updatedStatus};
+      }
+      return todo;
+    });
+    let updatedStatus;
+    try {
+      updatedStatus = updateTodos.find((todo) => todo.id === taskId).status;
+      const response = await fetch(`/api/update-task?id=${taskId}`,{
+        method: 'PUT',
+        body : JSON.stringify({status : updatedStatus}),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if(!response.ok){
+        throw new Error("Failed to update task");
+      }
+      setTodos(updateTodos);
+  }catch (error) {
+      console.error(error);
+    }
+  }
+
 
 
 
@@ -70,7 +98,12 @@ function HomePage({ initialTodoData }) {
       <Todo onAddTask={addTaskHandler} />
       <ul>
         {todos.map((todo) => (
-          <li key={todo.id}>{todo.task}
+          <li key={todo.id}>
+            <input 
+            type='checkbox'
+            checked = {todo.status === 'completed'}
+            onChange={()=>togleStatusHandler(todo.id)} />
+            {todo.task}
             <button onClick={() => deleteTaskHandler(todo.id)}>Delete</button>
           </li>
         ))}
