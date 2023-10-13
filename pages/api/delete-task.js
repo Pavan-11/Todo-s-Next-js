@@ -14,7 +14,7 @@ export default async function handler(req, res) {
 
         //fi task existing or not
 
-        const existingTask = await todosCollection.findOne({ _id: ObjectId(taskId) });
+        const existingTask = await todosCollection.findOne({ _id: ObjectId() });
         if (!existingTask) {
             return res.status(404).json({ message: 'Task not found' })
         }

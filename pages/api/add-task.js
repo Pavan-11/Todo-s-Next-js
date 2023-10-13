@@ -5,6 +5,8 @@ export default async function handler(req, res) {
     if (req.method === 'POST') {
         const data = req.body;
 
+        data.status = 'incomplete';
+
         // Connect to your MongoDB cluster
         const client = await MongoClient.connect('mongodb+srv://pavan-kumar:Pavan365@cluster0.z02fqin.mongodb.net/todos?retryWrites=true&w=majority');
         const db = client.db();
@@ -46,7 +48,8 @@ export async function getStaticProps(context) {
     const client = await MongoClient.connect('mongodb+srv://pavan-kumar:Pavan365@cluster0.z02fqin.mongodb.net/todos?retryWrites=true&w=majority');
     const db = client.db();
     const todosCollection = db.collection('todos');
-    const selectedtodos = await todosCollection.find({ _id: ObjectId(todoID), });
+    const selectedtodos = await todosCollection.find({ _id: ObjectId(todoID), status : 'incomplete' });
+
     client.close();
 
     const initialTodoData = selectedtodos.map((todo) => ({

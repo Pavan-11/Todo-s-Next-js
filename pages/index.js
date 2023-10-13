@@ -36,6 +36,7 @@ function HomePage({ initialTodoData }) {
         {
           id: data.taskId, 
           task: enteredTaskData.task,
+          status : data.status,
         },
       ]);
     } catch (error) {
@@ -95,6 +96,7 @@ export async function getStaticProps() {
 
     id: todo._id.toString(),
     task: todo.task,
+    status : 'incomplete',///////
   }));
 
   const filteredInitialTodoData = initialTodoData.filter((todo) => todo.id !== undefined && todo.task !== undefined);
