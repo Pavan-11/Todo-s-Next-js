@@ -1,0 +1,56 @@
+.todo h1{
+    text-align: center;
+    color: orange;
+    font-size: 3.5rem;
+    text-decoration: underline;
+
+}
+
+.textarea{
+    width: 100vw;
+    text-align: center;
+}
+
+.todo input[type="text"]{
+    text-align: center;
+    width: 20rem;
+    font-size: 2rem;
+    height: 2.5rem;
+}
+
+.textarea button{
+    background-color: lightgreen;
+    color: black;
+    border: none;
+    width: 4rem;
+    height: 2.5rem;
+    font-size: 1rem;
+    position: relative;
+    bottom: 0.3rem;
+    margin-left: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.textarea button:hover{
+    background-color: lightgray;
+    color: red;
+}
+
+
+
+.todo ul {
+    list-style-type: none;
+}
+
+.todo li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+
+
+.completed {
+    text-decoration: line-through;
+}
