@@ -22,11 +22,11 @@
     background-color: lightgreen;
     color: black;
     border: none;
-    width: 4rem;
+    width: 6rem;
     height: 2.5rem;
     font-size: 1rem;
     position: relative;
-    bottom: 0.3rem;
+    bottom: 0.25rem;
     margin-left: 1rem;
     border-radius: 10px;
     cursor: pointer;
@@ -47,8 +47,25 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 8px;
+    font-size: 2rem;
+    font-family: cursive;
+    color: cadetblue;
 }
 
+.todo li button{
+    background-color: lightcoral;
+    border: none;
+    border-radius: 3px;
+    height: 2rem;
+    margin-right: 1rem;
+}
+
+.todo li button:hover {
+    background-color: red;
+    color: white;
+    transition: 2s;
+
+}
 
 
 .completed {
